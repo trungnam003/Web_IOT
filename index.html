@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset = "utf-8">
+    <meta name=" generator " content = " FET-IUH Iot Team ">
+
+    <meta name=" dcterms.created " content = " T6 ,14 Thg6 2019 01:37:13 GMT ">
+
+    <meta name=" description " content = " Design Platform for Iot Labboratory ">
+
+    <meta name=" keywords " content = " Internet of thing,LoraWan,Raspberry Pi4 ">
+    <link rel="stylesheet" href="./main.css">
+    <link rel="shortcut icon" href="./vip.ico" type="image/x-icon">
+    <title>Tăng Hồ Trung Nam</title>
+</head>
+<body>
+    <div class="main">
+        <div class="header" id="header">
+            <h1 class="header-title">FET IUH IOT</h1>
+        </div>
+        <div class="container">
+            <h2 class="container-title">Design Platform for Iot Laboratory</h2>
+            <div>
+                <iframe width="450" height="260" style="border: 1px solid #cccccc; border-radius: 12px;" src="https://thingspeak.com/channels/1727092/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                <iframe width="450" height="260" style="border: 1px solid #cccccc; border-radius: 12px;" src="https://thingspeak.com/channels/1727092/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+            </div>
+            <div class="buttons">
+                <p class="buttons-title">
+                   Nhấn nút chọn chức năng
+                </p>
+                <div>
+                    <button class="button-33" id = "auto" onclick="Auto()">Auto</button>
+                    <button class="button-33" id = "manual" onclick="Manual()">Manual</button>
+                </div>
+                <div>
+                    <p class="Control">LED</p>
+                    <button class="button-33" id = "led_on" onclick="LED_On()">ON</button>
+                    <button class="button-33" id = "led_off" onclick="LED_Off()">OFF</button>
+                </div>
+                <div>
+                    <p class="Control">BUZZER</p>
+                    <button class="button-33" id = "buz_on" onclick="BUZZER_On()">ON</button>
+                    <button class="button-33" id = "buz_off" onclick="BUZZER_Off()">OFF</button>
+                </div>
+                <div>
+                    <p class="Control">RELAY</p>
+                    <button class="button-33" id = "relay_on" onclick="RELAY_On()">ON</button>
+                    <button class="button-33" id = "relay_off" onclick="RELAY_Off()">OFF</button>
+                </div>
+            </div>
+            <div id = "digital-clock"> </div>
+            <div class="thingspeak">
+                
+                <div>
+                    <iframe width="450" height="260" style="border: 1px solid #cccccc; border-radius: 12px;" src="https://thingspeak.com/channels/1727047/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                    <iframe width="450" height="260" style="border: 1px solid #cccccc; border-radius: 12px;" src="https://thingspeak.com/channels/1727052/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                </div>
+                <div>
+                    <iframe width="450" height="260" style="border: 1px solid #cccccc; border-radius: 12px;" src="https://thingspeak.com/channels/1727053/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                    <iframe width="450" height="260" style="border: 1px solid #cccccc; border-radius: 12px;" src="https://thingspeak.com/channels/1727055/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./main.js"></script>
+</html>

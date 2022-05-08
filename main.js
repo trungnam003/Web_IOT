@@ -24,86 +24,138 @@ params_relay_on = "api_key={0}&field1=1".format(API_RELAY);
 params_relay_off = "api_key={0}&field1=0".format(API_RELAY);
 
 var xhr = new XMLHttpRequest();
-
+var i = 0;
+function AutoManual(){
+    var z = i;
+    switch(z){
+        case 0:{
+            Auto();
+            document.getElementById("automanual").innerText = "Auto"
+            break;
+        }
+        case 1:{
+            Manual();
+            document.getElementById("automanual").innerText = "Manual"
+            break;
+        }
+        
+    }
+    i = i+1;
+    if(i>=3){
+        i=0;
+    }
+}
 function Auto()
 {
-    document.getElementById("auto").style.backgroundColor = "#ff9d00"
-    document.getElementById("manual").style.backgroundColor = "#fbe8c2"
+    
     xhr.open("POST",url,true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params_auto);
-    document.getElementById("led_on").disabled = true;
-    document.getElementById("led_off").disabled = true;
-    document.getElementById("buz_on").disabled = true;
-    document.getElementById("buz_off").disabled = true;
-    document.getElementById("relay_on").disabled = true;
-    document.getElementById("relay_off").disabled = true;
-    document.getElementById("led_off").style.backgroundColor = "#fbe8c2"
-    document.getElementById("led_on").style.backgroundColor = "#fbe8c2"
-    document.getElementById("buz_off").style.backgroundColor = "#fbe8c2"
-    document.getElementById("buz_on").style.backgroundColor = "#fbe8c2"
-    document.getElementById("relay_off").style.backgroundColor = "#fbe8c2"
-    document.getElementById("relay_on").style.backgroundColor = "#fbe8c2"
+    
 }
 function Manual()
 {
-    document.getElementById("manual").style.backgroundColor = "#ff9d00"
-    document.getElementById("auto").style.backgroundColor = "#fbe8c2"
+   
     xhr.open("POST",url,true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params_manual);
-    document.getElementById("led_on").disabled = false;
-    document.getElementById("led_off").disabled = false;
-    document.getElementById("buz_on").disabled = false;
-    document.getElementById("buz_off").disabled = false;
-    document.getElementById("relay_on").disabled = false;
-    document.getElementById("relay_off").disabled = false;
+    
 
 }
-
+var j = 0;
+function LED(){
+    var z = j;
+    switch(z){
+        case 0:{
+            LED_On();
+            document.getElementById("led").innerText = "ON"
+            break;
+        }
+        case 1:{
+            LED_Off();
+            document.getElementById("led").innerText = "OFF"
+            break;
+        }
+    }
+    j = j+1;
+    if(j>=3){
+        j=0;
+    }
+}
 function LED_On()
 {
-    document.getElementById("led_on").style.backgroundColor = "#ff9d00"
-    document.getElementById("led_off").style.backgroundColor = "#fbe8c2"
+    
     xhr.open("POST",url,true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params_led_on);
 }
 function LED_Off()
 {
-    document.getElementById("led_off").style.backgroundColor = "#ff9d00"
-    document.getElementById("led_on").style.backgroundColor = "#fbe8c2"
+    
     xhr.open("POST",url,true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params_led_off);
 }
-
+var k = 0;
+function BUZZER(){
+    var z = k;
+    switch(z){
+        case 0:{
+            BUZZER_On();
+            document.getElementById("buzzer").innerText = "ON"
+            break;
+        }
+        case 1:{
+            BUZZER_Off();
+            document.getElementById("buzzer").innerText = "OFF"
+            break;
+        }
+    }
+    k = k+1;
+    if(k>=3){
+        k=0;
+    }
+}
 function BUZZER_On()
 {
-    document.getElementById("buz_on").style.backgroundColor = "#ff9d00"
-    document.getElementById("buz_off").style.backgroundColor = "#fbe8c2"
     xhr.open("POST",url,true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params_buzzer_on);
 }
 function BUZZER_Off(){
-    document.getElementById("buz_off").style.backgroundColor = "#ff9d00"
-    document.getElementById("buz_on").style.backgroundColor = "#fbe8c2"
+    
     xhr.open("POST",url,true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params_buzzer_off);
 }
-
+var l = 0;
+function RELAY(){
+    var z = l;
+    switch(z){
+        case 0:{
+            RELAY_On();
+            document.getElementById("relay").innerText = "ON"
+            break;
+        }
+        case 1:{
+            RELAY_Off();
+            document.getElementById("relay").innerText = "OFF"
+            break;
+        }
+    }
+    l = l+1;
+    if(l>=3){
+        l=0;
+    }
+}
 function RELAY_On(){
-    document.getElementById("relay_on").style.backgroundColor = "#ff9d00"
-    document.getElementById("relay_off").style.backgroundColor = "#fbe8c2"
+    
     xhr.open("POST",url,true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params_relay_on);
 }
 function RELAY_Off(){
-    document.getElementById("relay_off").style.backgroundColor = "#ff9d00"
-    document.getElementById("relay_on").style.backgroundColor = "#fbe8c2"
+    
     xhr.open("POST",url,true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params_relay_off);

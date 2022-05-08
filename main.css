@@ -1,209 +1,113 @@
-var url = "https://api.thingspeak.com/update?";
-
-var API_AutoManual = "1EK5B9B41AE2MIPR";
-var API_LED = "L5HRQ3MPCL5AO59N";
-var API_BUZZER = "2AM06PATEZNHIHM7";
-var API_RELAY = "HPAHDD7PJU5HSOAY";
-String.prototype.format = function () {
-    var args = arguments;
-    return this.replace(/{([0-9]+)}/g, function (match, index) {
-      return typeof args[index] == 'undefined' ? match : args[index];
-    });
-};
-var params_auto = "api_key={0}&field1=1".format(API_AutoManual);
-var params_manual = "api_key={0}&field1=0".format(API_AutoManual);
-
-var params_led_on = "api_key={0}&field1=1".format(API_LED);
-var params_led_off = "api_key={0}&field1=0".format(API_LED);
-
-params_buzzer_on = "api_key={0}&field1=1".format(API_BUZZER);
-params_buzzer_off = "api_key={0}&field1=0".format(API_BUZZER);
-
-
-params_relay_on = "api_key={0}&field1=1".format(API_RELAY);
-params_relay_off = "api_key={0}&field1=0".format(API_RELAY);
-
-var xhr = new XMLHttpRequest();
-var i = 0;
-function AutoManual(){
-    var z = i;
-    switch(z){
-        case 0:{
-            Auto();
-            document.getElementById("automanual").innerText = "Auto"
-            break;
-        }
-        case 1:{
-            Manual();
-            document.getElementById("automanual").innerText = "Manual"
-            break;
-        }
-        
-    }
-    i = i+1;
-    if(i>=3){
-        i=0;
-    }
-}
-function Auto()
+*
 {
-    
-    xhr.open("POST",url,true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(params_auto);
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-size: 100%;
+}
+:root
+{
+    --size--: 48px;
+    --color--:#ff9d00;
+    --color-background--:#222222;
+}
+html
+{
+    scroll-behavior: smooth;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.main{
     
 }
-function Manual()
-{
-   
-    xhr.open("POST",url,true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(params_manual);
+#header{
+    height: var(--size--);
+    background-color: #222222;
+    z-index: 1;
+    width: 100%;
+    box-shadow: 0 0 4px rgba(22,22,22, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
     
+}
+.header-title{
+    display: block;
+    text-align: center;
+    padding-top: 2px;
+    color: #ff9d00;
+    font-size: 32px;
+}
+div .container{
+    position: relative;
+    display: block;
+    color: #ff9d00;
+    padding-top: 16px;
+    margin-top: var(--size--);
+    text-align: center;
+    background: #5D4157;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #A8CABA, #5D4157);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #A8CABA, #5D4157); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-}
-var j = 0;
-function LED(){
-    var z = j;
-    switch(z){
-        case 0:{
-            LED_On();
-            document.getElementById("led").innerText = "ON"
-            break;
-        }
-        case 1:{
-            LED_Off();
-            document.getElementById("led").innerText = "OFF"
-            break;
-        }
-    }
-    j = j+1;
-    if(j>=3){
-        j=0;
-    }
-}
-function LED_On()
-{
     
-    xhr.open("POST",url,true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(params_led_on);
 }
-function LED_Off()
-{
-    
-    xhr.open("POST",url,true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(params_led_off);
+div .buttons{
+    padding: 12px;
+    color: whitesmoke;
 }
-var k = 0;
-function BUZZER(){
-    var z = k;
-    switch(z){
-        case 0:{
-            BUZZER_On();
-            document.getElementById("buzzer").innerText = "ON"
-            break;
-        }
-        case 1:{
-            BUZZER_Off();
-            document.getElementById("buzzer").innerText = "OFF"
-            break;
-        }
-    }
-    k = k+1;
-    if(k>=3){
-        k=0;
-    }
+.buttons >button{
+    margin-top: 4px;
+    display: inline-block;
+    padding: 4px 12px;
 }
-function BUZZER_On()
-{
-    xhr.open("POST",url,true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(params_buzzer_on);
-}
-function BUZZER_Off(){
-    
-    xhr.open("POST",url,true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(params_buzzer_off);
-}
-var l = 0;
-function RELAY(){
-    var z = l;
-    switch(z){
-        case 0:{
-            RELAY_On();
-            document.getElementById("relay").innerText = "ON"
-            break;
-        }
-        case 1:{
-            RELAY_Off();
-            document.getElementById("relay").innerText = "OFF"
-            break;
-        }
-    }
-    l = l+1;
-    if(l>=3){
-        l=0;
-    }
-}
-function RELAY_On(){
-    
-    xhr.open("POST",url,true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(params_relay_on);
-}
-function RELAY_Off(){
-    
-    xhr.open("POST",url,true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(params_relay_off);
+.button-33 {
+    width: 10%;
+    margin-top: 4px;
+  background-color: #fbe8c2;
+  border-radius: 100px;
+  box-shadow: rgba(187, 170, 44, 0.2) 0 -25px 18px -14px inset,rgba(187, 87, 44, 0.15) 0 1px 2px,rgba(187, 44, 44, 0.15) 0 2px 4px,rgba(187, 92, 44, 0.15) 0 4px 8px,rgba(173, 187, 44, 0.15) 0 8px 16px,rgba(187, 96, 44, 0.15) 0 16px 32px;
+  color: rgb(128, 38, 0);
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 4px 12px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 14px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  
 }
 
-function Time() {
-    // Creating object of the Date class
-    var date = new Date();
-    // Get current hour
-    var hour = date.getHours();
-    // Get current minute
-    var minute = date.getMinutes();
-    // Get current second
-    var second = date.getSeconds();
-    // Variable to store AM / PM
-    var period = "";
-    // Assigning AM / PM according to the current hour
-    if (hour >= 12) {
-    period = "PM";
-    } else {
-    period = "AM";
-    }
-    // Converting the hour in 12-hour format
-    if (hour == 0) {
-    hour = 12;
-    } else {
-    if (hour > 12) {
-    hour = hour - 12;
-    }
-    }
-    // Updating hour, minute, and second
-    // if they are less than 10
-    hour = update(hour);
-    minute = update(minute);
-    second = update(second);
-    // Adding time elements to the div
-    document.getElementById("digital-clock").innerText = hour + " : " + minute + " : " + second + " " + period;
-    // Set Timer to 1 sec (1000 ms)
-    setTimeout(Time, 1000);
-   }
-    // Function to update time elements if they are less than 10
-    // Append 0 before time elements if they are less than 10
-   function update(t) {
-    if (t < 10) {
-    return "0" + t;
-    }
-    else {
-    return t;
-    }
-   }
-   Time();
+.button-33:hover {
+    /*
+  box-shadow: rgba(180, 187, 44, 0.35) 0 -25px 18px -14px inset,rgba(187, 96, 44, 0.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  */
+  transform: scale(1.05);
+}
+
+.Control{
+    width: 4%;
+    display: inline-block;
+    text-align: left
+}
+/* Importing Open Sans Condensed Google font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+#digital-clock {
+ background-color: #222222;
+ border-radius: 24px;
+ width: 15%;
+ margin: auto;
+ padding-top: 8px;
+ padding-bottom: 8px;
+ font-family: 'Open Sans Condensed', sans-serif;
+ font-size: 18px;
+ text-align: center;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.thingspeak{
+    margin-top: 12px;
+}
